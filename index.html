@@ -1,76 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backsies Website</title>
+  <title>Backsies</title>
   <style>
     @font-face {
-        font-family: 'ImpactCustom';
-        src: url(impact.ttf) format('truetype');
-        font-weight: normal;
-        font-style: normal;
+      font-family: 'ImpactCustom';
+      src: url('impact.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
 
     body {
-        font-family: 'ImpactCustom', Impact, sans-serif;
+      font-family: 'ImpactCustom', Impact, sans-serif;
+      background-color: lightblue;
+      margin: 0;
+      padding: 0;
     }
-img {
-            display: block;
-            margin: auto;
-        }
-.p2 {
-  font-family: Impact, 'ImpactCustom', sans-serif;
-  margin-bottom: 50px;
-  font-size: 20px;
-}
-.p4 {
-  font-family: Impact, 'ImpactCustom', sans-serif;
-  margin-bottom: 100px;
-  font-size: 20px;
-}
-.p3 {
-  font-family: Impact, 'ImpactCustom', sans-serif;
-  margin-bottom: 50px;
-  font-size: 35px;
-}
-body {
-  background-color: lightblue;
-  
-}
-.text-with-specific-margins {
-            margin-bottom: 20px;
-        }
-</style>
+
+    img {
+      display: block;
+      margin: auto;
+    }
+
+    button {
+      all: unset;
+      cursor: pointer;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 1fr ensures equal distribution */
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 50px;
+      max-width: 1000px; /* Ensures row doesn't exceed the banner's width */
+      margin: auto; /* Centers the row */
+    }
+
+    .image-row img {
+      width: 100%; /* Makes the button images responsive */
+      height: auto; /* Maintains aspect ratio */
+      max-width: 300px; /* Optional: Maximum width for each button image */
+    }
+
+
+    .p2, .p3, .p4 {
+      font-family: Impact, 'ImpactCustom', sans-serif;
+      font-size: 20px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .p3 {
+      font-size: 40px;
+    }
+
+    .p4 {
+      margin-bottom: 100px;
+    }
+
+    .text-with-specific-margins {
+      margin-bottom: 20px;
+    }
+    .responsive-banner {
+      width: 100%; /* Makes the image responsive */
+      height: auto; /* Maintains aspect ratio */
+      max-width: 1000px; /* Optional: Maximum width to maintain a limit */
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
 
-<img src="logo.png" alt="Backsies" width="250" height="175">
-<h1 style="text-align: center;" class="p3" >About Backsies</h1>
-<p  class="p2">Backsies is a board game first made at the end of 2023. Since then it has been expanded and is being worked on to eventually become a full game. In the game you will roll dice, draw cards, go backwards, and go to the negative zone (more about that in the rules).The game was made by the Tripoint crew (literally 3 teenagers) and other people who helped contribute to the game. </p>
+  <img src="banner.png" alt="Backsies" class="responsive-banner">
 
+  <div class="image-row">
+    <button onclick="about()">
+      <img src="about.png" alt="(about)">
+    </button>
+    <button onclick="merch()">
+      <img src="merch.png" alt="(merch)">
+    </button>
+    <button onclick="files()">
+      <img src="files.png" alt="(files)">
+    </button>
+  </div>
 
-<h1 style="text-align: center;" class="p3" >How to play Backsies</h1>
-<p class="p2" >
--The rules-
-The rules to backsies are simple: when it is your turn you roll the die;  getting a back moves you back 1 space, x moves you forward one, Z Lets You Move forward 1 or 2 Spaces, and Y makes you draw a card. If you go forward onto a card Space You draw a card, you don't draw if You go back onto a  card Space.
- If you go forward or back onto a Jump space you go to the attached Jump space. If You go forward onto a back you go to the attached back ; but if you go back onto a back You can stay on it, and if You get a second back you go up to the back. 
- 
-</p>
-<p class="p2">
--special rules- Negative Zone The negative zone is a place you go to When you draw a card that sends You to the negative Zone. When it is your turn in the negative Zone you will roll the dice; and if you get a X,Y, or z You get out of the negative zone and are Put on the jump space closest to the most people, but if you get
-a back you draw a frontsies card and You will go back a space and draw a Frontsies card.
-</p>
-<p class="p4">
--The Void-
-When You go back 5 times in the negative zone you will enter the Void. The Void Makes You draw a negative trait card and you will go back to the back space closest to the most number of players.
-
-</p>
-<p class="p2">
-  special thanks to all the people that helped make this game better!
-  
+  <h1 class="p3">About Backsies</h1>
+  <p class="p2">
+    Backsies is a board game first made at the end of 2023. Since then, it has been expanded and is being worked on to eventually become a full game. In the game, you will roll dice, draw cards, go backwards, and go to the negative zone (more about that in the rules). The game was made by the Tripoint crew (literally 3 teenagers) and other people who helped contribute to the game.
   </p>
 
+  <h1 class="p3">How to Play Backsies</h1>
+  <p class="p2">
+    The rules:<br>
+    The rules to Backsies are simple: When it is your turn, you roll the die. Getting a back moves you back 1 space, X moves you forward one, Z lets you move forward 1 or 2 spaces, and Y makes you draw a card. If you go forward onto a card space, you draw a card; you don't draw if you go back onto a card space. If you go forward or back onto a jump space, you go to the attached jump space. If you go forward onto a back, you go to the attached back, but if you go back onto a back, you can stay on it. If you get a second back, you go up to the back.
+  </p>
+  <p class="p2">
+    Negative Zone:<br>
+    The Negative Zone is a place you go when you draw a card that sends you there. When it is your turn in the Negative Zone, you will roll the dice. If you get an X, Y, or Z, you get out of the Negative Zone and are placed on the jump space closest to the most people. But if you get a back, you draw a Frontsies card, and you will go back a space and draw a Frontsies card.
+  </p>
+  <p class="p4">
+    The Void:<br>
+    When you go back 5 times in the Negative Zone, you will enter the Void. The Void makes you draw a negative trait card, and you will go back to the back space closest to the most number of players.
+  </p>
+  <p class="p2">
+    Special thanks to all the people who helped make this game better!
+  </p>
 
+  <button onclick="merch()">Open Page</button>
+  <button onclick="about()">Open Page</button>
+  <button onclick="files()">Open Page</button>
+
+
+
+  <script>
+    function merch() {
+        window.location.href = "merch.html"; // Redirect to merch page
+    }
+    function about() {
+        window.location.href = "about.html"; // Redirect to about page
+    }
+    function files() {
+        window.location.href = "files.html"; // Redirect to files page
+    }
+  </script> 
 </body>
 </html>
