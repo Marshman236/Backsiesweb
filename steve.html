@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird Game</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #game {
+            width: 100%; /* Changed to scale with window width */
+            height: 600px;
+            margin: auto;
+            background-color: #f0f0f0;
+            border: 1px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        #bird {
+            width: 70px; /* Changed to a square shape */
+            height: 60px; /* Changed to a square shape */
+            background-image: url('steve.jpg'); /* Changed to use an image */
+            background-size: cover; /* Ensures the image covers the entire element */
+            border-radius: 0; /* Changed to make the image a square */
+            position: absolute;     
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: top 0.5s ease; /* Smooth transition for upward movement */
+        }
+        #pipe-top, #pipe-bottom {
+            width: 80px;
+            background-color: green;
+            position: absolute;
+            left: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div id="bird"></div>
+    </div>
+    <div id="score">Score: 0</div>
+    <button onclick="goBack()">Back to Index</button> <!-- Added button to go back to index.html -->
+    <script>
+        let bird = document.getElementById('bird');
+        let game = document.getElementById('game');
+        let birdTop = 500;
+        let gravity = 5; // Increased gravity for faster downward movement
+        let jump = 75; // Increased jump for faster upward movement
+        let score = 0;
+        let pipeWidth = 10;
+        let pipeGap = 200; // Gap between top and bottom pipes
+        let pipeHeight = 300; // Height of each pipe section
+        let speed = 0.45; // Initial speed
+        let speedMultiplier = 1.1; // Speed multiplier for exponential increase
+
+        function createPipe() {
+            // Remove existing pipes
+            let existingPipes = document.querySelectorAll('.pipe');
+            existingPipes.forEach(pipe => pipe.remove());
+
+            // Randomize pipe position
+            let randomPosition = Math.random() * (game.clientHeight - pipeGap);
+
+            // Create top pipe
+            let topPipe = document.createElement('div');
+            topPipe.classList.add('pipe');
+            topPipe.id = 'pipe-top';
+            topPipe.style.height = `${randomPosition}px`;
+            topPipe.style.top = '0';
+            game.appendChild(topPipe);
+
+            // Create bottom pipe
+            let bottomPipe = document.createElement('div');
+            bottomPipe.classList.add('pipe');
+            bottomPipe.id = 'pipe-bottom';
+            bottomPipe.style.height = `${game.clientHeight - randomPosition - pipeGap}px`;
+            bottomPipe.style.top = `${randomPosition + pipeGap}px`;
+            game.appendChild(bottomPipe);
+
+            return { topPipe, bottomPipe };
+        }
+
+        let { topPipe, bottomPipe } = createPipe();
+        let pipeLeft = 100;
+
+        function jumpBird() {
+            birdTop -= jump;
+            bird.style.top = `${birdTop}%`; // Smooth transition applied
+        }
+
+        function update() {
+            birdTop += gravity;
+            bird.style.top = `${birdTop}%`; // Smooth transition applied
+            
+            pipeLeft -= speed; // Use speed variable for movement
+            topPipe.style.left = pipeLeft + '%';
+            bottomPipe.style.left = pipeLeft + '%';
+
+            if (pipeLeft < -10) {
+                pipeLeft = 100;
+                score++;
+                document.getElementById('score').innerText = `Score: ${score}`;
+                
+                // Create new pipes
+                let newPipes = createPipe();
+                topPipe = newPipes.topPipe;
+                bottomPipe = newPipes.bottomPipe;
+
+                // Increase speed exponentially
+                speed *= speedMultiplier;
+            }
+
+            // Game over conditions
+            let birdRect = bird.getBoundingClientRect();
+            let topPipeRect = topPipe.getBoundingClientRect();
+            let bottomPipeRect = bottomPipe.getBoundingClientRect();
+
+            if (birdRect.top <= 0 || birdRect.bottom >= game.clientHeight ||
+                (birdRect.right > topPipeRect.left && birdRect.left < topPipeRect.right &&
+                 (birdRect.top < topPipeRect.bottom || birdRect.bottom > bottomPipeRect.top))) {
+                restartGame();
+            }
+        }
+
+        function restartGame() {
+            birdTop = 50;
+            pipeLeft = 100;
+            score = 0;
+            speed = 0.3; // Reset speed to initial value
+            document.getElementById('score').innerText = `Score: ${score}`;
+            bird.style.top = `${birdTop}%`; // Smooth transition applied
+            
+            // Recreate pipes
+            let newPipes = createPipe();
+            topPipe = newPipes.topPipe;
+            bottomPipe = newPipes.bottomPipe;
+        }
+
+        function goBack() {
+            window.location.href = "index.html"; // Redirect to index.html
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ') {
+                jumpBird();
+            }
+        });
+
+        setInterval(update, 16);
+    </script>
+</body>
+</html>
