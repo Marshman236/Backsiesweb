@@ -14,15 +14,131 @@
 
   body {
     font-family: 'ImpactCustom', Impact, sans-serif;
-    background-color: lightblue;
+    background: linear-gradient(to bottom, #87eba2, #3b8f46);
     margin: 0;
     padding: 0;
+  }
+
+  h1 {
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
-  <img src="banner.png" alt="Backsies" width="1188" height="369">
-  <h1 class="p3">Backsies merch?!?!</h1>
+  <img src="banner.png" alt="Backsies" class="responsive-banner">
+    
+  <div class="image-row">
+    <button onclick="about()" style="background: transparent; border: none;">
+      <img src="about.png" alt="(about)">
+    </button>
+    <button onclick="merch()" style="background: transparent; border: none;">
+      <img src="merch.png" alt="(merch)">
+    </button>
+    <button onclick="files()" style="background: transparent; border: none;">
+      <img src="files.png" alt="(files)">
+    </button>
+  </div>
+
+
+  <h1 class="p3">Backsies Merch!</h1>
+<style>
+      .responsive-banner {
+      width: 100%; /* Makes the image responsive */
+      height: auto; /* Maintains aspect ratio */
+      max-width: 1000px; /* Optional: Maximum width to maintain a limit */
+      margin-bottom: 5px;
+      display: block; /* Makes the image a block element */
+      margin-left: auto; /* Centers the image horizontally */
+      margin-right: auto;
+    }
+  .merch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 40px auto;
+    gap: 20px; /* Reduced gap to keep elements closer */
+    flex-wrap: nowrap; /* Prevent wrapping to keep elements together */
+    min-width: 300px; /* Minimum width for container */
+  }
+
+  @media (max-width: 768px) { /* Add responsive behavior for small screens */
+    .merch-container {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+  .merch-image {
+    width: 450px; /* Fixed width */
+    max-width: 45%; /* Maximum width relative to container */
+    height: auto;
+    object-fit: contain; /* Maintain aspect ratio */
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap between text elements */
+    text-align: center;
+    width: auto; /* Allow natural width */
+    min-width: 150px; /* Minimum width for text container */
+    padding: 0 10px; /* Add some padding */
+  }
+
+  .text-layer {
+    font-family: Impact, 'ImpactCustom', sans-serif;
+    font-size: clamp(16px, 2vw, 24px); /* Slightly adjusted font size range */
+    margin: 0;
+    line-height: 1.2; /* Tighter line height */
+  }
+  
+  .image-row img {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+    }
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 50px;
+      width: 90%;
+      margin: auto;
+    }
+</style>
+
+<div class="merch-container">
+  <img src="merch-image.png" alt="Backsies Merchandise" class="merch-image">
+  <div class="text-container">
+    <p class="text-layer">Tshirt</p>
+    <p class="text-layer">Blue</p>
+    <p class="text-layer">S,M,L,XL,XXL</p>
+    <p class="text-layer">$10.00</p>
+  </div>
+</div>
+
+<div class="merch-container">
+  <div class="text-container">
+    <p class="text-layer">Tshirt</p>
+    <p class="text-layer">Black</p>
+    <p class="text-layer">S,M,L,XL,XXL</p>
+    <p class="text-layer">$10.00</p>
+  </div>
+  <img src="merch-image2.png" alt="More Backsies Merchandise" class="merch-image">
+</div>
+<script>
+  function merch() {
+      window.location.href = "merch.html"; // Redirect to merch page
+  }
+  function about() {
+      window.location.href = "about.html"; // Redirect to about page
+  }
+  function files() {
+      window.location.href = "files.html"; // Redirect to files page
+  }
+</script> 
 </body>
 </html>
