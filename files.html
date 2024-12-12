@@ -4,25 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backsies-files</title>
-<style>
-@font-face {
-    font-family: 'ImpactCustom';
-    src: url('impact.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+    <style>
+        @font-face {
+            font-family: 'ImpactCustom';
+            src: url('impact.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-  body {
-    font-family: 'ImpactCustom', Impact, sans-serif;
-    background-color: lightblue;
-    margin: 0;
-    padding: 0;
-  }
-</style>
+        body {
+            font-family: 'ImpactCustom', Impact, sans-serif;
+            background: linear-gradient(to bottom, #e47709, #522a03);
+            margin: 0;
+            padding: 0;
+        }
+        .p2, .p3, .p4 {
+      font-family: Impact, 'ImpactCustom', sans-serif;
+      font-size: 25px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+        .p4 {
+            margin-bottom: 100px;
+        }
+        .responsive-banner {
+            width: 100%;
+            height: auto;
+            max-width: 1000px;
+            margin-bottom: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .image-row img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            object-fit: contain;
+        }
+
+        .image-row button {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .downloads-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .download-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #eb9d17;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .download-button:hover {
+            background: #7b4a05;
+        }
+    </style>
 </head>
 <body>
-
-  <img src="banner.png" alt="Backsies" width="1188" height="369">
-  <h1 class="p3">Backsies files</h1>
+    <img src="banner.png" alt="Backsies" class="responsive-banner">
+    
+    <div class="image-row">
+      <button onclick="about()" style="background: transparent; border: none;">
+        <img src="about.png" alt="(about)">
+      </button>
+      <button onclick="merch()" style="background: transparent; border: none;">
+        <img src="merch.png" alt="(merch)">
+      </button>
+      <button onclick="files()" style="background: transparent; border: none;">
+        <img src="files.png" alt="(files)">
+      </button>
+    </div>
+        <br>
+        <h1 class="p2">Files not listed here are located at https://github.com/Marshman236/Backsies</h1>
+    </div>
+    <h1 class="p3">Backsies files</h1>
+    
+    <div class="downloads-container">
+        <div class="download-item">
+            <h2>File Big backsies folder of almost everything</h2>
+            <p>File has all photos and 3d models</p>
+            <a href="all.zip" download class="download-button">
+                Download
+            </a>
+        </div>
+        
+        <div class="download-item">
+            <h2>important files only</h2>
+            <p>File smaller size, has all pages and files needed to play the game, nothing else.</p>
+            <a href="slim.zip" download class="download-button">
+                Download
+            </a>
+        </div>
+    </div>
+    
+  <script>
+    function merch() {
+        window.location.href = "merch.html"; // Redirect to merch page
+    }
+    function about() {
+        window.location.href = "about.html"; // Redirect to about page
+    }
+    function files() {
+        window.location.href = "files.html"; // Redirect to files page
+    }
+  </script>
 </body>
 </html>

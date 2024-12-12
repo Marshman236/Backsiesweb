@@ -14,17 +14,155 @@
 
   body {
     font-family: 'ImpactCustom', Impact, sans-serif;
-    background-color: lightblue;
+    background: linear-gradient(to bottom, #87CEEB, #3b8c8f);
     margin: 0;
     padding: 0;
+  }
+  .p2, .p3, .p4 {
+      font-family: Impact, 'ImpactCustom', sans-serif;
+      font-size: 40px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    .p3 {
+      font-size: 60px;
+    }
+
+    .p4 {
+      margin-bottom: 100px;
+    }
+    .responsive-banner {
+      width: 100%; /* Makes the image responsive */
+      height: auto; /* Maintains aspect ratio */
+      max-width: 1000px; /* Optional: Maximum width to maintain a limit */
+      margin-bottom: 5px;
+      display: block; /* Makes the image a block element */
+      margin-left: auto; /* Centers the image horizontally */
+      margin-right: auto;
+    }
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 1fr ensures equal distribution */
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 50px;
+      max-width: 1000px; /* Ensures row doesn't exceed the banner's width */
+      margin: auto; /* Centers the row */
+    }
+
+    .image-row img {
+      width: 100%; /* Makes the button images responsive */
+      height: auto; /* Maintains aspect ratio */
+      max-width: 300px; /* Optional: Maximum width for each button image */
+    }
+    .merch-container {
+    display: flex;
+    flex-direction: column; /* Changed to column to stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 40px auto;
+    gap: 20px; /* Reduced gap to keep elements closer */
+    flex-wrap: nowrap; /* Prevent wrapping to keep elements together */
+    min-width: 300px; /* Minimum width for container */
+  }
+
+  @media (max-width: 768px) { /* Add responsive behavior for small screens */
+    .merch-container {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+  .merch-image {
+    width: 450px; /* Fixed width */
+    max-width: 45%; /* Maximum width relative to container */
+    height: auto;
+    object-fit: contain; /* Maintain aspect ratio */
   }
 </style>
 </head>
 <body>
 
-  <img src="banner.png" alt="Backsies" width="1188" height="369">
-  <h1 class="p3">About Backsies</h1>
-  <p class="p2"> In the winter of 2023 a game was created by Tripoint games. It was a card drawing, dice rolling game called Backsies. The game went through many different variations until the game had its core gameplay finished. The game would conist of player trying to reach the end of the board to win the game, but in order to move you would have to roll a die. The die consist of a X, a Y, a Z, and 3 backs. If you get a X you will be able to go forward 1 space, for Z you will be able to move forward 1 or 2 spaces, for Y you get to draw a card, and back will move you back 1 space. 
+  <img src="banner.png" alt="Backsies" class="responsive-banner">
+  
+  <div class="image-row">
+    <button onclick="about()" style="background: transparent; border: none;">
+      <img src="about.png" alt="(about)">
+    </button>
+    <button onclick="merch()" style="background: transparent; border: none;">
+      <img src="merch.png" alt="(merch)">
+    </button>
+    <button onclick="files()" style="background: transparent; border: none;">
+      <img src="files.png" alt="(files)">
+    </button>
+  </div>
+  <h1 class="p2">About Backsies</h1>
+  <p class="p1"> In the winter of 2023 a game was created by Tripoint games. 
+    It is a card drawing, dice rolling game called Backsies. 
+    The game went through many different variations until the game had its core gameplay finished.
+     The game would conist of player trying to reach the end of the board to win the game, but in order to move you have to roll a die. The die consist of a X, a Y, a Z, and 3 backs. If you get a X you will be able to go forward 1 space, for Z you will be able to move forward 1 or 2 spaces, for Y you get to draw a card, and back will move you back 1 space. 
+    </p>
+  <p class="p1">
+The game includes a total of 33 cards, 22 Backsies cards, 6 Frontsies cards, and 5 negative trait cards. The game also includes the game board, 4 player characters, and a die. 
   </p>
-</body>
-</html>
+  <div class="merch-container">
+    <img src="steve.jpg" alt="Backsies Merchandise" class="merch-image" style="width: 300px; height: auto;">
+    <div class="text-container">
+      <p class="p4">Stupid Steve</p>
+      <p class="p1"></p>
+      <p class="p4"></p>
+      <p class="p4"></p>
+    </div>
+    <img src="allen.jpg" alt="Backsies Merchandise" class="merch-image" style="width: 300px; height: auto;">
+    <div class="text-container">
+        <p class="p4">Angry Allen</p>
+        <p class="p1"></p>
+        <p class="p4"></p>
+        <p class="p4"></p>
+    </div>
+    <img src="rose.jpg" alt="Backsies Merchandise" class="merch-image" style="width: 300px; height: auto;">
+    <div class="text-container">
+      <p class="p4">Romantic Rose</p>
+      <p class="p1"></p>
+      <p class="p4"></p>
+      <p class="p4"></p>
+    </div>
+    <img src="hank.jpg" alt="Backsies Merchandise" class="merch-image" style="width: 300px; height: auto;">
+    <div class="text-container">
+      <p class="p4">Happy Hank</p>
+      <p class="p1"></p>
+      <p class="p4"></p>
+      <p class="p4"></p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <button onclick="merch()">Open Page</button>
+  <button onclick="about()">Open Page</button>
+  <button onclick="files()">Open Page</button>
+  <script>
+    function merch() {
+        window.location.href = "merch.html"; // Redirect to merch page
+    }
+    function about() {
+        window.location.href = "about.html"; // Redirect to about page
+    }
+    function files() {
+        window.location.href = "files.html"; // Redirect to files page
+    }
+    </script>
+      </body>
