@@ -39,18 +39,11 @@
             position: absolute;
             left: 100%;
         }
-        .tap-text {
-            position: absolute;
-            font-size: 24px;
-            color: #fff;
-            transform: rotate(0deg);
-        }
     </style>
 </head>
 <body>
     <div id="game">
         <div id="bird"></div>
-        <div class="tap-text" style="top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(0deg);">Tap</div>
     </div>
     <div id="score">Score: 0</div>
     <button onclick="goBack()">Back to Index</button> <!-- Added button to go back to index.html -->
@@ -165,25 +158,6 @@
         });
 
         let gameInterval = null; // Initialize gameInterval to null
-
-        // Function to generate random tap text
-        function generateTapText() {
-            let tapText = document.createElement('div');
-            tapText.classList.add('tap-text');
-            tapText.innerText = 'Tap';
-            let randomTop = Math.random() * 100; // Random top position
-            let randomLeft = Math.random() * 100; // Random left position
-            let randomRotation = Math.random() * 360; // Random rotation
-            tapText.style.top = `${randomTop}%`;
-            tapText.style.left = `${randomLeft}%`;
-            tapText.style.transform = `rotate(${randomRotation}deg)`;
-            game.appendChild(tapText);
-        }
-
-        // Generate tap text 10 times
-        for (let i = 0; i < 10; i++) {
-            generateTapText();
-        }
     </script>
 </body>
 </html>
